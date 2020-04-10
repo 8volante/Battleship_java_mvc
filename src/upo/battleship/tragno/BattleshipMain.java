@@ -7,6 +7,7 @@ public class BattleshipMain {
 		BattleshipModel modello = new BattleshipModel();
 		BattleshipView vista = new BattleshipView("Battleship Cecci-Tragno", modello);
 		//BattleshipController controllore = new BattleshipController(modello, vista);
+		//bau
 	}
 
 }
