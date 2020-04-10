@@ -9,6 +9,7 @@ public class BattleshipMain {
 		//BattleshipController controllore = new BattleshipController(modello, vista);
 		//bau
 		//riccardo culo
+		//prova 2
 	}
 
 }
