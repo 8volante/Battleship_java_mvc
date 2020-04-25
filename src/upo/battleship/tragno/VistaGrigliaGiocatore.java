@@ -109,7 +109,7 @@ public class VistaGrigliaGiocatore extends JPanel{
 			for( int j = 0; j < lunghezza; j++) {
 				System.out.println("COLORO NAVE VERTICALE");
 				cellePlayer[x+j][y].setBackground(Color.GRAY);
-				if(j==0) {
+				/*if(j==0) {
 					cellePlayer[x+j-1][y].setText("X");
 					cellePlayer[x+j-1][y-1].setText("X");
 					cellePlayer[x+j][y-1].setText("X");
@@ -127,14 +127,14 @@ public class VistaGrigliaGiocatore extends JPanel{
 					cellePlayer[x+j+1][y+1].setText("X");
 					cellePlayer[x+j][y+1].setText("X");
 					cellePlayer[x+j-1][y+1].setText("X");
-				}
+				}*/
 			}
 		}
 		else if(!verticale) {
 			for(int i = 0; i < lunghezza; i++) {
 				System.out.println("COLORO NAVE ORIZZONTALE");
 				cellePlayer[x][y+i].setBackground(Color.GRAY);
-				if(i==0) {
+				/*if(i==0) {
 					cellePlayer[x-1][y+i].setText("X");
 					cellePlayer[x-1][y-1+i].setText("X");
 					cellePlayer[x][y-1+i].setText("X");
@@ -152,7 +152,7 @@ public class VistaGrigliaGiocatore extends JPanel{
 					cellePlayer[x+1][y+1+i].setText("X");
 					cellePlayer[x][y+1+i].setText("X");
 					cellePlayer[x-1][y+1+i].setText("X");
-				}
+				}*/
 			}
 		}
 	}
