@@ -55,8 +55,8 @@ public class ControllerGrigliaGiocatore {
 									if(valuta == true) {
 										
 										System.out.println("POSIZIONO " + nave.getNome() + " " + nave.getLunghezza());
-										
-										vistaPlayer.posizionaNave(nave, x, y);
+										//x y invertite
+										vistaPlayer.posizionaNave(nave, y, x);
 											
 										System.out.println("HO POSIZIONATO");
 									}//fine if

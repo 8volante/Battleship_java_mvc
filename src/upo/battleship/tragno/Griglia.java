@@ -37,12 +37,13 @@ public class Griglia implements Serializable{
 	public Griglia () {
 		
 		celle = new Cella[DIM_GRIGLIA][DIM_GRIGLIA];
-		celleLibere = new ArrayList<>();
+		celleLibere = new ArrayList<Cella>();
 		
 		for(int i = 0; i < DIM_GRIGLIA; i++) {
 			for(int j = 0; j < DIM_GRIGLIA; j++ ) {
 				celle[i][j] = new Cella(i, j);
-				celleLibere.add(celle[i][j]);
+				if(i != 0 && j != 0)
+					celleLibere.add(celle[i][j]);
 			}
 		}
 		
@@ -74,9 +75,7 @@ public class Griglia implements Serializable{
 				return false;
 			}
 			for(int i = 0; i < lunghezza; i++) {
-				if(!celleLibere.contains(celle[x+i][y]))
-					return false;
-				if(!verificaNaveVicina(x+i, y, i))
+				if(!celleLibere.contains(celle[x+i][y]) || !verificaNaveVicina(x+i, y, i))
 					return false;
 				celle[x+i][y].assegnaNave(nave);
 				celleLibere.remove(celle[x+i][y]);
@@ -87,9 +86,7 @@ public class Griglia implements Serializable{
 				return false;
 			}
 			for(int i = 0; i < lunghezza; i++) {
-				if(!celleLibere.contains(celle[x][y+i]))
-					return false;
-				if(!verificaNaveVicina(x, y+i, i))
+				if(!celleLibere.contains(celle[x][y+i]) || !verificaNaveVicina(x, y+i, i))
 					return false;
 				celle[x][y+i].assegnaNave(nave);
 				celleLibere.remove(celle[x][y+i]);
@@ -206,26 +203,26 @@ public class Griglia implements Serializable{
 			if(k == 0) {
 				
 				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   verificaCoordinate(i-1, j) && cella1.getLibera() &&
-				   verificaCoordinate(i-1, j-1) && cella2.getLibera() &&
-				   verificaCoordinate(i, j-1) && cella3.getLibera() &&
-				   verificaCoordinate(i+1, j-1) && cella4.getLibera() &&
-				   verificaCoordinate(i+1, j) && cella5.getLibera() &&
-				   verificaCoordinate(i+1, j+1) && cella6.getLibera() &&
-				   verificaCoordinate(i, j+1) && cella7.getLibera() &&
-				   verificaCoordinate(i-1, j+1) && cella8.getLibera()) {
+				   cella1.getLibera() &&
+				   cella2.getLibera() &&
+				   cella3.getLibera() &&
+				   cella4.getLibera() &&
+				   cella5.getLibera() &&
+				   cella6.getLibera() &&
+				   cella7.getLibera() &&
+				   cella8.getLibera()) {
 					return true;
 				}
 			}
 			else{
 				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   verificaCoordinate(i-1, j-1) && cella2.getLibera() &&
-				   verificaCoordinate(i, j-1) && cella3.getLibera() &&
-				   verificaCoordinate(i+1, j-1) && cella4.getLibera() &&
-				   verificaCoordinate(i+1, j) && cella5.getLibera() &&
-				   verificaCoordinate(i+1, j+1) && cella6.getLibera() &&
-				   verificaCoordinate(i, j+1) && cella7.getLibera() &&
-				   verificaCoordinate(i-1, j+1) && cella8.getLibera()) {
+				   cella2.getLibera() &&
+				   cella3.getLibera() &&
+				   cella4.getLibera() &&
+				   cella5.getLibera() &&
+				   cella6.getLibera() &&
+				   cella7.getLibera() &&
+				   cella8.getLibera()) {
 					return true;
 				}
 			}
@@ -234,26 +231,26 @@ public class Griglia implements Serializable{
 			if(k == 0) {
 				
 				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   verificaCoordinate(i-1, j) && cella1.getLibera() &&
-				   verificaCoordinate(i-1, j-1) && cella2.getLibera() &&
-				   verificaCoordinate(i, j-1) && cella3.getLibera() &&
-				   verificaCoordinate(i+1, j-1) && cella4.getLibera() &&
-				   verificaCoordinate(i+1, j) && cella5.getLibera() &&
-				   verificaCoordinate(i+1, j+1) && cella6.getLibera() &&
-				   verificaCoordinate(i, j+1) && cella7.getLibera() &&
-				   verificaCoordinate(i-1, j+1) && cella8.getLibera()) {
+				   cella1.getLibera() &&
+				   cella2.getLibera() &&
+				   cella3.getLibera() &&
+				   cella4.getLibera() &&
+				   cella5.getLibera() &&
+				   cella6.getLibera() &&
+				   cella7.getLibera() &&
+				   cella8.getLibera()) {
 					return true;
 				}
 			}
 			else{
 				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   verificaCoordinate(i-1, j) && cella1.getLibera() &&
-				   verificaCoordinate(i-1, j-1) && cella2.getLibera() &&
-				   verificaCoordinate(i+1, j-1) && cella4.getLibera() &&
-				   verificaCoordinate(i+1, j) && cella5.getLibera() &&
-				   verificaCoordinate(i+1, j+1) && cella6.getLibera() &&
-				   verificaCoordinate(i, j+1) && cella7.getLibera() &&
-				   verificaCoordinate(i-1, j+1) && cella8.getLibera()) {
+				   cella1.getLibera() &&
+				   cella2.getLibera() && 
+				   cella4.getLibera() &&
+				   cella5.getLibera() &&
+				   cella6.getLibera() && //i+2 > 2 &&
+				   cella7.getLibera() &&
+				   cella8.getLibera()) {
 					return true;
 				}
 			}

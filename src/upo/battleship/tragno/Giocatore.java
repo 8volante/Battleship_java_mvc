@@ -56,8 +56,10 @@ public class Giocatore {
 		if(naviDaPosizionare.contains(nave)) {
 			nave.setVerticale(grigliaGiocatore.getVerticale());
 			ret = grigliaGiocatore.posizionaNave(nave, x, y);
-			naviDaPosizionare.remove(nave);
-			navi.add(nave);
+			if (ret == true) {
+				naviDaPosizionare.remove(nave);
+				navi.add(nave);
+			}
 			if(naviDaPosizionare.isEmpty()) {
 				giocoPronto = true;
 			}

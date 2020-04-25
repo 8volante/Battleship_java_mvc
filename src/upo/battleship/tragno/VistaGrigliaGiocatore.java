@@ -36,8 +36,8 @@ public class VistaGrigliaGiocatore extends JPanel{
 		for(int i = 0; i < 11; i++) {
 			for(int j = 0; j < 11; j++) {
 				
-				cellePlayer[i][j] = new JLabel();
-				cellePlayer[i][j].addMouseListener(this.controllerGiocatore.assegnaGestoreCelle(i, j));
+				cellePlayer[i][j] = new JLabel();                                     // i j invertite
+				cellePlayer[i][j].addMouseListener(this.controllerGiocatore.assegnaGestoreCelle(j, i));
 				cellePlayer[i][j].setPreferredSize(new Dimension(10, 10));
 				cellePlayer[i][j].setOpaque(true);
 				cellePlayer[i][j].setHorizontalAlignment(JLabel.CENTER);
@@ -173,6 +173,18 @@ public class VistaGrigliaGiocatore extends JPanel{
 			for(int j = 0; j < 11; j++) {
 				if((i != 0 && j != 0) && (i != 0 && j > 0) && (j != 0 && i > 0) ) {
 					this.cellePlayer[i][j].setBackground(Color.CYAN);
+					this.cellePlayer[i][j].setText("");
+				}
+				else if(i == 0 && j > 0 ){
+					this.cellePlayer[i][j].setBackground(Color.LIGHT_GRAY);
+					this.cellePlayer[i][j].setText("" + j);
+				}
+				else if(j == 0 && i > 0 ){
+					this.cellePlayer[i][j].setBackground(Color.LIGHT_GRAY);
+					this.cellePlayer[i][j].setText("" + i);
+				}
+				else {
+					this.cellePlayer[i][j].setBackground(Color.LIGHT_GRAY);
 					this.cellePlayer[i][j].setText("");
 				}
 			}
