@@ -143,8 +143,8 @@ public class Griglia implements Serializable{
 		int stato = 0;
 		int [][] stato_griglia = new int [DIM_GRIGLIA][DIM_GRIGLIA];
 		
-		for(int i = 0; i < DIM_GRIGLIA; i++) {
-			for(int j = 0; j < DIM_GRIGLIA; j++) {
+		for(int i = 1; i < DIM_GRIGLIA; i++) {
+			for(int j = 1; j < DIM_GRIGLIA; j++) {
 				if(!cpu) {
 					stato = celle[i][j].getStato();
 					stato_griglia[i][j] = stato;
@@ -183,13 +183,17 @@ public class Griglia implements Serializable{
 	 * @param k
 	 * @return
 	 */
-	public boolean verificaNaveVicina(int x, int y, int k) {
+	public boolean verificaNaveVicina(int x, int y, int prua) {
+		
+		if(x == 10 && y == 10 && prua == 0) {
+			return false;
+		}
 		
 		int i = x;
 		int j = y;
 		
 		Cella cella = getCella(i, j);
-		Cella cella1 = getCella(i-1, j);
+	/*	Cella cella1 = getCella(i-1, j);
 		Cella cella2 = getCella(i-1, j-1);
 		Cella cella3 = getCella(i, j-1);
 		Cella cella4 = getCella(i+1, j-1);
@@ -197,61 +201,208 @@ public class Griglia implements Serializable{
 		Cella cella6 = getCella(i+1, j+1);
 		Cella cella7 = getCella(i, j+1);
 		Cella cella8 = getCella(i-1, j+1);
-		
+	*/
 		if(!getVerticale()) {
 			
-			if(k == 0) {
-				
-				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   cella1.getLibera() &&
-				   cella2.getLibera() &&
-				   cella3.getLibera() &&
-				   cella4.getLibera() &&
-				   cella5.getLibera() &&
-				   cella6.getLibera() &&
-				   cella7.getLibera() &&
-				   cella8.getLibera()) {
-					return true;
+			if(j == 10) { // celle con y = 10;
+				if(prua == 0) { //prua
+					Cella cella1 = getCella(i-1, j);
+					Cella cella2 = getCella(i-1, j-1);
+					Cella cella3 = getCella(i, j-1);
+					Cella cella4 = getCella(i+1, j-1);
+					Cella cella5 = getCella(i+1, j);
+					
+					if(verificaCoordinate(i, j) && cella.getLibera() &&
+					   cella1.getLibera() &&
+					   cella2.getLibera() &&
+					   cella3.getLibera() &&
+					   cella4.getLibera() &&
+					   cella5.getLibera()) {
+						return true;
+					}
+				}
+				else{ 
+					if(i == 10) {
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella3 = getCella(i, j-1);
+						if(cella.getLibera() && cella2.getLibera() &&
+								cella3.getLibera()) {
+								return true;
+						}
+					}
+					else {
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella3 = getCella(i, j-1);
+						Cella cella4 = getCella(i+1, j-1);
+						Cella cella5 = getCella(i+1, j);	
+						if(verificaCoordinate(i, j) && cella.getLibera() &&
+							cella2.getLibera() &&
+							cella3.getLibera() &&
+							cella4.getLibera() &&
+							cella5.getLibera()) {
+							return true;
+						}
+					}
 				}
 			}
-			else{
-				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   cella2.getLibera() &&
-				   cella3.getLibera() &&
-				   cella4.getLibera() &&
-				   cella5.getLibera() &&
-				   cella6.getLibera() &&
-				   cella7.getLibera() &&
-				   cella8.getLibera()) {
-					return true;
+			else {
+				if(prua == 0) { //prua
+					Cella cella1 = getCella(i-1, j);
+					Cella cella2 = getCella(i-1, j-1);
+					Cella cella3 = getCella(i, j-1);
+					Cella cella4 = getCella(i+1, j-1);
+					Cella cella5 = getCella(i+1, j);
+					Cella cella6 = getCella(i+1, j+1);
+					Cella cella7 = getCella(i, j+1);
+					Cella cella8 = getCella(i-1, j+1);
+					
+					if(verificaCoordinate(i, j) && cella.getLibera() &&
+					   cella1.getLibera() &&
+					   cella2.getLibera() &&
+					   cella3.getLibera() &&
+					   cella4.getLibera() &&
+					   cella5.getLibera() &&
+					   cella6.getLibera() &&
+					   cella7.getLibera() &&
+					   cella8.getLibera()) {
+						return true;
+					}
+				}
+				else{
+					if(i == 10) {
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella3 = getCella(i, j-1);
+						Cella cella7 = getCella(i, j+1);
+						Cella cella8 = getCella(i-1, j+1);
+						if(cella.getLibera() && cella2.getLibera() &&
+								cella3.getLibera() &&
+								cella7.getLibera() &&
+								cella8.getLibera()) {
+								return true;
+						}
+					}
+					else {
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella3 = getCella(i, j-1);
+						Cella cella4 = getCella(i+1, j-1);
+						Cella cella5 = getCella(i+1, j);
+						Cella cella6 = getCella(i+1, j+1);
+						Cella cella7 = getCella(i, j+1);
+						Cella cella8 = getCella(i-1, j+1);
+						
+						if(verificaCoordinate(i, j) && cella.getLibera() &&
+						   cella2.getLibera() &&
+						   cella3.getLibera() &&
+						   cella4.getLibera() &&
+						   cella5.getLibera() &&
+						   cella6.getLibera() &&
+						   cella7.getLibera() &&
+						   cella8.getLibera()) {
+							return true;
+						}
+					}
 				}
 			}
 		}
 		else {
-			if(k == 0) {
-				
-				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   cella1.getLibera() &&
-				   cella2.getLibera() &&
-				   cella3.getLibera() &&
-				   cella4.getLibera() &&
-				   cella5.getLibera() &&
-				   cella6.getLibera() &&
-				   cella7.getLibera() &&
-				   cella8.getLibera()) {
-					return true;
+			if(i == 10) { // celle con x = 10;
+				if(prua == 0) { //prua
+					Cella cella1 = getCella(i-1, j);
+					Cella cella2 = getCella(i-1, j-1);
+					Cella cella3 = getCella(i, j-1);
+					Cella cella7 = getCella(i, j+1);
+					Cella cella8 = getCella(i-1, j+1);
+					
+					if(verificaCoordinate(i, j) && cella.getLibera() &&
+					   cella1.getLibera() &&
+					   cella2.getLibera() &&
+					   cella3.getLibera() &&
+					   cella7.getLibera() &&
+					   cella8.getLibera()) {
+						return true;
+					}
+				}
+				else{ 
+					if(j == 10) {
+						Cella cella1 = getCella(i-1, j);
+						Cella cella2 = getCella(i-1, j-1);
+						if(cella.getLibera() && cella1.getLibera() &&
+								cella2.getLibera()) {
+								return true;
+						}
+					}
+					else {
+						Cella cella1 = getCella(i-1, j);
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella7 = getCella(i, j+1);
+						Cella cella8 = getCella(i-1, j+1);
+						
+						if(verificaCoordinate(i, j) && cella.getLibera() &&
+						   cella1.getLibera() && 
+						   cella2.getLibera() && 
+						   cella7.getLibera() &&
+						   cella8.getLibera()) {
+							return true;
+						}
+					}
 				}
 			}
-			else{
-				if(verificaCoordinate(i, j) && cella.getLibera() &&
-				   cella1.getLibera() &&
-				   cella2.getLibera() && 
-				   cella4.getLibera() &&
-				   cella5.getLibera() &&
-				   cella6.getLibera() && //i+2 > 2 &&
-				   cella7.getLibera() &&
-				   cella8.getLibera()) {
-					return true;
+			else {
+				if(prua == 0) { //prua
+					Cella cella1 = getCella(i-1, j);
+					Cella cella2 = getCella(i-1, j-1);
+					Cella cella3 = getCella(i, j-1);
+					Cella cella4 = getCella(i+1, j-1);
+					Cella cella5 = getCella(i+1, j);
+					Cella cella6 = getCella(i+1, j+1);
+					Cella cella7 = getCella(i, j+1);
+					Cella cella8 = getCella(i-1, j+1);
+					
+					if(verificaCoordinate(i, j) && cella.getLibera() &&
+					   cella1.getLibera() &&
+					   cella2.getLibera() &&
+					   cella3.getLibera() &&
+					   cella4.getLibera() &&
+					   cella5.getLibera() &&
+					   cella6.getLibera() &&
+					   cella7.getLibera() &&
+					   cella8.getLibera()) {
+						return true;
+					}
+				}
+				else{
+					if(j == 10) {
+						Cella cella1 = getCella(i-1, j);
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella4 = getCella(i+1, j-1);
+						Cella cella5 = getCella(i+1, j);
+						if(cella.getLibera() && cella1.getLibera() &&
+								cella2.getLibera() &&
+								cella4.getLibera() &&
+								cella5.getLibera()) {
+								return true;
+						}
+					}
+					else {
+						Cella cella1 = getCella(i-1, j);
+						Cella cella2 = getCella(i-1, j-1);
+						Cella cella4 = getCella(i+1, j-1);
+						Cella cella5 = getCella(i+1, j);
+						Cella cella6 = getCella(i+1, j+1);
+						Cella cella7 = getCella(i, j+1);
+						Cella cella8 = getCella(i-1, j+1);
+						
+						if(verificaCoordinate(i, j) && cella.getLibera() &&
+						   cella1.getLibera() &&
+						   cella2.getLibera() && 
+						   cella4.getLibera() &&
+						   cella5.getLibera() &&
+						   cella6.getLibera() && //i+2 > 2 &&
+						   cella7.getLibera() &&
+						   cella8.getLibera()) {
+							return true;
+						}
+					}
 				}
 			}
 		}

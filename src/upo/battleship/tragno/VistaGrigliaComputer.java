@@ -20,15 +20,17 @@ public class VistaGrigliaComputer extends JPanel{
 	JLabel[][] celleComputer;
 	private BattleshipController controllore;
 	private BattleshipModel modello;
+	private VistaGrigliaGiocatore vistaPlayer;
 	ControllerGrigliaComputer controllerComputer;
 	
 	
-	public VistaGrigliaComputer(BattleshipModel modello, BattleshipController controllore) {
+	public VistaGrigliaComputer(BattleshipModel modello, BattleshipController controllore, VistaGrigliaGiocatore player) {
 		
 		this.controllore = controllore;
 		this.modello = modello;
+		this.vistaPlayer = player;
 		
-		controllerComputer = new ControllerGrigliaComputer(this, modello, controllore);
+		controllerComputer = new ControllerGrigliaComputer(this, modello, controllore, player);
 		
 		this.setSize(100, 100);
 		this.setLayout(new GridLayout(11,11));
@@ -107,21 +109,18 @@ public class VistaGrigliaComputer extends JPanel{
 		String colpito = "X";
 		this.celleComputer[x][y].setText(colpito);
 		this.celleComputer[x][y].setBackground(Color.YELLOW);
-		
 	}
 	
 	public void colpisciCellaVuota(int x, int y) {
 		String colpito = "X";
 		this.celleComputer[x][y].setText(colpito);
-		this.celleComputer[x][y].setBackground(Color.ORANGE);
-		
+		this.celleComputer[x][y].setBackground(Color.BLUE);
 	}
 	
 	public void colpisciNaveColpita(int x, int y) {
 		String colpito = "X";
 		this.celleComputer[x][y].setText(colpito);
 		this.celleComputer[x][y].setBackground(Color.RED);
-		
 	}
 	
 	public void finePartita() {
@@ -136,7 +135,7 @@ public class VistaGrigliaComputer extends JPanel{
 	}
 	
 	public void posizionaNave(Nave nave, int x, int y) {
-		
+		System.out.println("Vista");
 		int lunghezza = nave.getLunghezza();
 		boolean verticale = nave.getVerticale();
 		

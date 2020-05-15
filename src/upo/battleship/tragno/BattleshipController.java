@@ -34,18 +34,20 @@ public class BattleshipController{
 				modello.fasePosizionamento();
 				System.out.println("Inizio fase: " + modello.getFase());
 				
-			/*	GESTIONE POSIZIONAMENTO NAVI COMPUTER
+			    /*GESTIONE POSIZIONAMENTO NAVI COMPUTER*/
 				if(modello.getFase() == 1) {
 					ArrayList<Nave> navi =  modello.getComputer().getNaviDaPosizionare();
 					Nave nave = navi.get(i);
+					System.out.println(nave.getNome());
 					
 					try {
-	
-						boolean valuta = modello.getComputer().posizionaRandom();
 						
+						boolean valuta = modello.getComputer().posizionaRandom();
+						System.out.println("TRY");
 						if(valuta == true) {
-							
+							System.out.println("VALUTIF");
 							vistaComputer.posizionaNave(nave, modello.getComputer().getX(), modello.getComputer().getY());
+							System.out.println("POSNAV");
 						}//fine if
 						
 						else if(valuta == false) {
@@ -54,14 +56,13 @@ public class BattleshipController{
 						}//fine else
 				
 					}catch (Exception exc) {
-						System.out.println("ERRORE POSIZIONAMENTO NAVE " + exc.getMessage());
+						System.out.println("ERRORE POSIZIONAMENTO NAVE: " + nave.getNome());
 					}
 					finally {
 						
 						System.out.println("FINE POSIZIONAMENTO NAVI COMPUTER");
 					}
-				}*/
-				
+				}				
 			}
 		};
 		return gestoreStartGame;

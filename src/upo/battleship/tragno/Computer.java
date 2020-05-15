@@ -13,7 +13,7 @@ public class Computer {
 	public Griglia grigliaComputer;
 	
 	private ArrayList<Cella> bersaglio; //contiene i bersagli
-	private ArrayList<Cella> cercato; //contiene celle gi√† cercate
+	private ArrayList<Cella> cercato; //contiene celle gi‡† cercate
 	private ArrayList<Cella> posIntorno;
 	private Cella[][] cellePossibili;
 	private boolean secondoColpo;
@@ -44,7 +44,6 @@ public class Computer {
 			nave = new Nave(lunghezze[i], nomi[i]);
 			naviDaPosizionare.add(nave);
 		}
-		
 		fineTurno = false;
 		finePartita = false;
 		giocoPronto = false;
@@ -79,27 +78,28 @@ public class Computer {
 			x = (int) (Math.random() * 10) % 10;
 			y = (int) (Math.random() * 10) % 10;
 			z = (int) (Math.random() * 10) % 2;
+			System.out.println(z);
 			boolean orientamento = vertical[z];
 			if (posizionaNave(nave, x, y, orientamento)) {
 				naviDaPosizionare.remove(nave);
-			} else {
-				naviDaPosizionare.add(nave);
 			}
 		}
 		return true;
 	}
 
 	public boolean posizionaNave(Nave nave, int x, int y, boolean orientamento) {
-		boolean ret = orientamento;
+		if(naviDaPosizionare.isEmpty()) {
+			giocoPronto = true;
+		}
+		
+		grigliaComputer.setVerticale(orientamento);
 		if(naviDaPosizionare.contains(nave)) {
-			ret = grigliaComputer.posizionaNave(nave, x, y);
-			naviDaPosizionare.remove(nave);
-			navi.add(nave);
-			if(naviDaPosizionare.isEmpty()) {
-				giocoPronto = true;
+			if(grigliaComputer.posizionaNave(nave, x, y)) {
+				navi.add(nave);
+				return true;
 			}
 		}
-		return ret;
+		return false;
 				
 	}
 	
@@ -107,7 +107,7 @@ public class Computer {
 	 * Permette all'{@link Computer} di colpire una {@link Cella} casuale
 	 * @param cella
 	 */
-	public void colpisci() {
+	public int colpisci() {
 		if(bersaglio.isEmpty()) {
 			bersaglioUsato = false;
 			secondoColpo = false;
@@ -182,12 +182,11 @@ public class Computer {
 			secondoColpo = false;
 		}
 		
-		/*if(ris == 3) {
+		if(ris == 3) {
 			finePartita = true;
 		}
-
-		return campoGiocatore.colpisci(cella);*/
 		
+		return ris;
 	}
 
 	/**
@@ -196,8 +195,17 @@ public class Computer {
 	 * <pre>cella papabile per essere colpita, inserendola alla griglia di celle possibili</pre>
 	 */
 	private Cella random() {
-		Cella pos = new Cella((int) (Math.random() * 10) % 10,(int) (Math.random() * 10) % 10);
+		Cella pos;
+		do {
+			pos = new Cella((int) (Math.random() * 10) % 10,(int) (Math.random() * 10) % 10);
+			System.out.println("Cella colpita (" + pos.getX() +","+ pos.getY() + " )");
+		}
+		while (pos.getX() <= 1 || pos.getX() >= 10 || pos.getY() <= 1 || pos.getY() >= 10);
 		return cellePossibili[pos.getX()][pos.getY()];
+	}
+	
+	public Cella getColpo() {
+		return colpo;
 	}
 	
 	/**
@@ -208,8 +216,8 @@ public class Computer {
 		ArrayList<Cella> posizioni = new ArrayList<Cella>();
 		
 		int[][] stato = grigliaGiocatore.getStato(true);
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
+		for (int i = 1; i < 10; i++) {
+			for (int j = 1; j < 10; j++) {
 				if (stato[i][j] == 2) {
 					for (int h = 0; h < intorno(cellePossibili[i][j]).size(); h++)
 						
@@ -228,22 +236,22 @@ public class Computer {
 	private ArrayList<Cella> intorno(Cella colpo) {
 		ArrayList<Cella> posizioni = new ArrayList<Cella>();
 		Cella new_pos = new Cella(0, 0);
-		if (colpo.getX() > 0) {
+		if (colpo.getX() > 1) {
 			new_pos = new Cella(colpo.getX() - 1, colpo.getY());
 			posizioni.add(cellePossibili[new_pos.getX()][new_pos.getY()]);
 		}
 
-		if (colpo.getX() < 9) {
+		if (colpo.getX() < 10) {
 			new_pos = new Cella(colpo.getX() + 1, colpo.getY());
 			posizioni.add(cellePossibili[new_pos.getX()][new_pos.getY()]);
 		}
 
-		if (colpo.getY() < 9) {
+		if (colpo.getY() < 10) {
 			new_pos = new Cella(colpo.getX(), colpo.getY() + 1);
 			posizioni.add(cellePossibili[new_pos.getX()][new_pos.getY()]);
 		}
 
-		if (colpo.getY() > 0) {
+		if (colpo.getY() > 1) {
 			new_pos = new Cella(colpo.getX(), colpo.getY() - 1);
 			posizioni.add(cellePossibili[new_pos.getX()][new_pos.getY()]);
 		}

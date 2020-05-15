@@ -89,16 +89,36 @@ public class VistaGrigliaGiocatore extends JPanel{
 
 	public JLabel getCella(int x, int y) {
 		return this.cellePlayer[x][y];
-		
 	}
 	
 	public void setCella(int x, int y) {
 		String colpito = "X";
 		this.cellePlayer[x][y].setText(colpito);
-		
 	}
 	
+	public void colpisciCellaPiena(int y, int x) {
+		String colpito = "X";
+		//if (x >= 1 && x <= 10 && y >= 1 && y <= 10) {
+			this.cellePlayer[x][y].setText(colpito);
+			this.cellePlayer[x][y].setBackground(Color.YELLOW);
+		//}
+	}
 	
+	public void colpisciCellaVuota(int y, int x) {
+		String colpito = "X";
+		//if (x >= 1 && x <= 10 && y >= 1 && y <= 10) {
+			this.cellePlayer[x][y].setText(colpito);
+			this.cellePlayer[x][y].setBackground(Color.BLUE);
+		//}
+	}
+	
+	public void colpisciNaveColpita(int y, int x) {
+		String colpito = "X";
+		//if (x >= 1 && x <= 10 && y >= 1 && y <= 10) {
+			this.cellePlayer[x][y].setText(colpito);
+			this.cellePlayer[x][y].setBackground(Color.RED);
+		//}
+	}
 
 	public void posizionaNave(Nave nave, int x, int y) {
 		
@@ -107,52 +127,12 @@ public class VistaGrigliaGiocatore extends JPanel{
 		
 		if(verticale) {
 			for( int j = 0; j < lunghezza; j++) {
-				System.out.println("COLORO NAVE VERTICALE");
 				cellePlayer[x+j][y].setBackground(Color.GRAY);
-				/*if(j==0) {
-					cellePlayer[x+j-1][y].setText("X");
-					cellePlayer[x+j-1][y-1].setText("X");
-					cellePlayer[x+j][y-1].setText("X");
-					cellePlayer[x+j+1][y-1].setText("X");
-					cellePlayer[x+j+1][y].setText("X");
-					cellePlayer[x+j+1][y+1].setText("X");
-					cellePlayer[x+j][y+1].setText("X");
-					cellePlayer[x+j-1][y+1].setText("X");
-				}
-				else {
-					cellePlayer[x+j-1][y-1].setText("X");
-					cellePlayer[x+j][y-1].setText("X");
-					cellePlayer[x+j+1][y-1].setText("X");
-					cellePlayer[x+j+1][y].setText("X");
-					cellePlayer[x+j+1][y+1].setText("X");
-					cellePlayer[x+j][y+1].setText("X");
-					cellePlayer[x+j-1][y+1].setText("X");
-				}*/
 			}
 		}
 		else if(!verticale) {
 			for(int i = 0; i < lunghezza; i++) {
-				System.out.println("COLORO NAVE ORIZZONTALE");
 				cellePlayer[x][y+i].setBackground(Color.GRAY);
-				/*if(i==0) {
-					cellePlayer[x-1][y+i].setText("X");
-					cellePlayer[x-1][y-1+i].setText("X");
-					cellePlayer[x][y-1+i].setText("X");
-					cellePlayer[x+1][y-1+i].setText("X");
-					cellePlayer[x+1][y+i].setText("X");
-					cellePlayer[x+1][y+1+i].setText("X");
-					cellePlayer[x][y+1+i].setText("X");
-					cellePlayer[x-1][y+1+i].setText("X");
-				}
-				else {
-					cellePlayer[x-1][y+i].setText("X");
-					cellePlayer[x-1][y-1+i].setText("X");
-					cellePlayer[x+1][y-1+i].setText("X");
-					cellePlayer[x+1][y+i].setText("X");
-					cellePlayer[x+1][y+1+i].setText("X");
-					cellePlayer[x][y+1+i].setText("X");
-					cellePlayer[x-1][y+1+i].setText("X");
-				}*/
 			}
 		}
 	}

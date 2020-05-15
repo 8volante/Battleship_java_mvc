@@ -87,11 +87,13 @@ public class BattleshipView extends JFrame{
 		areaDiGioco.setBackground(Color.LIGHT_GRAY);
 		areaDiGioco.setBorder(bordo);
 		/*Griglie*/
-		grigliaComputer = new VistaGrigliaComputer(this.modello, this.controllore);
+		grigliaGiocatore = new VistaGrigliaGiocatore(this.modello, this.controllore);
+		grigliaComputer = new VistaGrigliaComputer(this.modello, this.controllore, grigliaGiocatore);
+		
 		computer = new JLabel("IMPERO                ");
 		areaDiGioco.add(computer);
 		areaDiGioco.add(grigliaComputer);
-		grigliaGiocatore = new VistaGrigliaGiocatore(this.modello, this.controllore);
+		
 		player = new JLabel("RIBELLIONE              ");
 		areaDiGioco.add(player);
 		areaDiGioco.add(grigliaGiocatore);
@@ -144,7 +146,7 @@ public class BattleshipView extends JFrame{
 
 
 	public void setGrigliaComputer(VistaGrigliaGiocatore grigliaComputer) {
-		this.grigliaComputer =  new VistaGrigliaComputer(this.modello, this.controllore);
+		this.grigliaComputer =  new VistaGrigliaComputer(this.modello, this.controllore, grigliaGiocatore);
 	}
 
 

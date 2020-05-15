@@ -30,39 +30,21 @@ public class ControllerGrigliaGiocatore {
 					
 					ArrayList<Nave> navi =  model.getGiocatore().getNaviDaPosizionare();
 					
-					for(int j = 0; j < navi.size(); j ++) {
-						System.out.println("NAVI :" + navi.get(j).getNome());
-					}
-					
 					Nave nave = navi.get(i);
 					
 					try {
-						System.out.println("PRIMA DEL IF GIOCATORE");
 						
 						if(!model.getGiocatore().getNaviDaPosizionare().isEmpty()) {
-							
-							System.out.println("Dopo if GIOCATORE");
-								
-									
-									System.out.println("NAVE BEFORE:" + navi.get(i).getNome());
 									
 									boolean valuta = model.getGiocatore().posizionaNave(nave, x, y);
 									
-								//	System.out.println("NAVE AFTER POSIZIONA CGC (NAVI.GET):" + navi.get(i).getNome());
-									System.out.println("NAVE AFTER POSIZIONA CGC (NAVE):" + nave.getNome());
-									//System.out.println("CELLA GIOCATORE");
-									
 									if(valuta == true) {
-										
-										System.out.println("POSIZIONO " + nave.getNome() + " " + nave.getLunghezza());
 										//x y invertite
 										vistaPlayer.posizionaNave(nave, y, x);
-											
-										System.out.println("HO POSIZIONATO");
 									}//fine if
 									
 									else if(valuta == false) {
-										navi.add(nave);
+										//navi.add(nave);
 										System.out.println("Posizione non valida");
 									}//fine else
 							

@@ -6,13 +6,15 @@ import java.awt.event.MouseListener;
 public class ControllerGrigliaComputer {
 	
 	VistaGrigliaComputer vistaComputer;
+	VistaGrigliaGiocatore vistaPlayer;
 	BattleshipModel model;
 	BattleshipController controllore;
 	
-	public ControllerGrigliaComputer(VistaGrigliaComputer vista, BattleshipModel model, BattleshipController controllore) {
+	public ControllerGrigliaComputer(VistaGrigliaComputer vista, BattleshipModel model, BattleshipController controllore, VistaGrigliaGiocatore vista2) {
 		this.model = model;
 		this.vistaComputer = vista;
 		this.controllore = controllore;
+		this.vistaPlayer = vista2;
 	}
 	
 	public MouseListener assegnaGestoreCelle(int x, int y) {
@@ -23,7 +25,7 @@ public class ControllerGrigliaComputer {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if(model.getFase() == 2) {
+				if(model.getFase() == 2 && model.getTurno() == 0) {
 					
 					System.out.println("CELLA COMPUTER");
 					int valuta = model.getGrigliaComputer().colpisci(x, y);
@@ -43,6 +45,31 @@ public class ControllerGrigliaComputer {
 						vistaComputer.finePartita();
 						model.setFase(3);
 					}
+					model.setTurno(1);
+				}
+				
+				if(model.getFase() == 2 && model.getTurno() == 1) {
+					
+					int stato = model.getComputer().colpisci();
+					if(stato == 0) {
+						System.out.println("COLPISCO");
+						vistaPlayer.colpisciCellaVuota(model.getComputer().getColpo().getX(), model.getComputer().getColpo().getY());
+						System.out.println("ACQUA");
+					}
+					else if(stato == 1) {
+						vistaPlayer.colpisciCellaPiena(model.getComputer().getColpo().getX(), model.getComputer().getColpo().getY());
+						System.out.println("COLPITO");
+					}
+					else if(stato == 2) {
+						vistaPlayer.colpisciNaveColpita(model.getComputer().getColpo().getX(), model.getComputer().getColpo().getY());
+						System.out.println("COLPITO E AFFONDATO");
+					}
+					else if(stato == 3) {
+						System.out.println("END");
+						vistaPlayer.finePartita();
+						model.setFase(3);
+					}
+					model.setTurno(0);
 				}
 			}
 			

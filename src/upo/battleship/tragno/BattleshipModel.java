@@ -28,6 +28,14 @@ public class BattleshipModel{
 		computer = new Computer(turno, grigliaGiocatore, grigliaComputer);
 	}
 	
+	public int getTurno() {
+		return this.turno;
+	}
+	
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
+	
 	public void fasePosizionamento() {
 		setFase(FASE_POSIZIONAMENTO_NAVI);
 		
