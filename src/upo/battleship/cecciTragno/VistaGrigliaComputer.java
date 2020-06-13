@@ -109,27 +109,28 @@ public class VistaGrigliaComputer extends JPanel implements VistaGriglia{
 		
 	}
 	
+	@Override
 	public void colpisciCellaPiena(int x, int y) {
 		String colpito = "X";
 		this.celleComputer[x][y].setText(colpito);
 		this.celleComputer[x][y].setBackground(Color.YELLOW);
 	}
 	
-	
+	@Override
 	public void colpisciCellaVuota(int x, int y) {
 		String colpito = "O";
 		this.celleComputer[x][y].setText(colpito);
 		this.celleComputer[x][y].setBackground(Color.BLUE);
 	}
 	
-	
+	@Override
 	public void colpisciNaveColpita(int x, int y) {
 		String colpito = "X";
 		this.celleComputer[x][y].setText(colpito);
 		this.celleComputer[x][y].setBackground(Color.RED);
 	}
 	
-	
+	@Override
 	public void finePartita() {
 		for(int i = 0; i < 11; i++) {
 			for(int j = 0; j < 11; j++) {
@@ -141,7 +142,7 @@ public class VistaGrigliaComputer extends JPanel implements VistaGriglia{
 		}
 	}
 	
-	
+	@Override
 	public void reset() {
 		for(int i = 0; i < 11; i++) {
 			for(int j = 0; j < 11; j++) {

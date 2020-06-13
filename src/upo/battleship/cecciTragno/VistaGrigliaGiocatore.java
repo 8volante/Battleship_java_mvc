@@ -101,7 +101,7 @@ public class VistaGrigliaGiocatore extends JPanel implements VistaGriglia{
 		this.cellePlayer[x][y].setText(colpito);
 	}
 	
-	
+	@Override
 	public void colpisciCellaPiena(int x, int y) {
 		String colpito = "X";
 		
@@ -110,6 +110,7 @@ public class VistaGrigliaGiocatore extends JPanel implements VistaGriglia{
 		
 	}
 	
+	@Override
 	public void colpisciCellaVuota(int x, int y) {
 		String colpito = "O";
 		
@@ -118,7 +119,7 @@ public class VistaGrigliaGiocatore extends JPanel implements VistaGriglia{
 		
 	}
 	
-	
+	@Override
 	public void colpisciNaveColpita(int x, int y) {
 		String colpito = "X";
 		
@@ -150,7 +151,7 @@ public class VistaGrigliaGiocatore extends JPanel implements VistaGriglia{
 		}
 	}
 	
-	
+	@Override
 	public void finePartita() {
 		for(int i = 0; i < 11; i++) {
 			for(int j = 0; j < 11; j++) {
@@ -162,7 +163,7 @@ public class VistaGrigliaGiocatore extends JPanel implements VistaGriglia{
 		}
 	}
 
-	
+	@Override
 	public void reset() {
 		for(int i = 0; i < 11; i++) {
 			for(int j = 0; j < 11; j++) {
