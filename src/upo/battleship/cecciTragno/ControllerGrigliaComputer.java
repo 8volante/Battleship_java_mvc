@@ -22,9 +22,8 @@ public class ControllerGrigliaComputer {
 	}
 	
 	public MouseListener assegnaGestoreCelle(int x, int y) {
-		MouseListener gestoreCelle;
 		
-		gestoreCelle = new MouseListener() {
+		MouseListener gestoreCelle = new MouseListener() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -79,31 +78,24 @@ public class ControllerGrigliaComputer {
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-			
 		};
 		return gestoreCelle;
 	}
-	
-	
 }

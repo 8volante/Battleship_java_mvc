@@ -22,8 +22,8 @@ public class ControllerGrigliaGiocatore {
 	}
 	
 	public MouseListener assegnaGestoreCelle(int x, int y) {
-		MouseListener gestoreCelle;
-		gestoreCelle = new MouseListener() {
+		
+		MouseListener gestoreCelle = new MouseListener() {
 			
 			@SuppressWarnings("unused")
 			private PopUp popUp;
@@ -87,8 +87,7 @@ public class ControllerGrigliaGiocatore {
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				
-			}
-			
+			}	
 		};
 		return gestoreCelle;
 	}

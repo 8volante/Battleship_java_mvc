@@ -18,7 +18,6 @@ public class BattleshipModel{
 	
 	
 	public BattleshipModel() {
-		super();
 		faseProgramma = FASE_POSIZIONAMENTO_NAVI;
 		turno = TURNO_GIOCATORE;
 		grigliaComputer = new Griglia();

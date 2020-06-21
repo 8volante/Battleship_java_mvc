@@ -64,7 +64,6 @@ public class Nave {
 		this.verticale = orientamento;
 	}
 
-	
 	/**
 	 * Diminuisce di 1 la vita della nave
 	 */ 

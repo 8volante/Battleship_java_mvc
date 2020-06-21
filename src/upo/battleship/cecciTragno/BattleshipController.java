@@ -23,60 +23,30 @@ public class BattleshipController{
 	public BattleshipController(BattleshipModel m, BattleshipView v) {
 		this.modello = m;
 		this.vista = v;
-		//this.vistaComputer = vistaComputer;
 		modello.fasePosizionamento();
-		posizionaNaviCPU();
-		
+		modello.getComputer().posizionaRandom();
+		popUp = new PopUp("LA FLOTTA IMPERIALE SI E' DISPOSTA");
 	}
 	
-	/**
-	 * Permette il posizionamento, randomico, delle navi della CPU
-	 */
-	public void posizionaNaviCPU() {
-		
-		if(modello.getFase() == 1) {
-			ArrayList<Nave> navi =  modello.getComputer().getNaviDaPosizionare();
-			Nave nave = navi.get(0);
-			
-			try {
-				
-				boolean valuta = modello.getComputer().posizionaRandom();
-			
-				if(valuta == false) {
-					navi.add(nave);
-				}
-		
-			}catch (Exception exc) {
-				System.out.println("ERRORE POSIZIONAMENTO NAVE: " + nave.getNome());
-			}
-			finally {
-				
-				popUp = new PopUp("LA FLOTTA IMPERIALE SI E' DISPOSTA");
-			}
-		}
-	}
 
 	public ActionListener assegnaGestoreNewGame() {
-		ActionListener gestoreNewGame;
-		
-		gestoreNewGame = new ActionListener() {
+		// Classe Locale
+		ActionListener gestoreNewGame = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				modello.reset();
 				vista.reset();
-				posizionaNaviCPU();
+				modello.getComputer().posizionaRandom();
+				popUp = new PopUp("LA FLOTTA IMPERIALE SI E' DISPOSTA");
 			}
-			
 		};
-		
 		return gestoreNewGame;
 	}
 	
 	public MouseListener assegnaGestoreVerticale() {
-		MouseListener gestoreVerticale;
 		
-		gestoreVerticale = new MouseListener() {
+		MouseListener gestoreVerticale = new MouseListener() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -86,31 +56,26 @@ public class BattleshipController{
 					orientamento = true;
 					modello.setVerticale(orientamento);
 				}
-				
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 		};
 		return gestoreVerticale;
@@ -118,9 +83,8 @@ public class BattleshipController{
 	
 	
 	public MouseListener assegnaGestoreOrizzontale() {
-		MouseListener gestoreOrizzontale;
 		
-		gestoreOrizzontale = new MouseListener() {
+		MouseListener gestoreOrizzontale = new MouseListener() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -134,26 +98,22 @@ public class BattleshipController{
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 		};
 		return gestoreOrizzontale;

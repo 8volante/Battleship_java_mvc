@@ -1,13 +1,5 @@
 package upo.battleship.cecciTragno;
 
-
-
-//import java.util.ArrayList;
-
-//import javax.swing.event.ChangeEvent;
-//import javax.swing.event.ChangeListener;
-
-
 /**
  * 	
  * Una Cella della {@link Griglia} che può contenere una {@link Nave} 
