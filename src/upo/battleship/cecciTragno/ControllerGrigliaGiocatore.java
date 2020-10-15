@@ -52,7 +52,7 @@ public class ControllerGrigliaGiocatore {
 										
 									}//fine else
 							
-						}//fine while
+						}
 					}catch (Exception exc) {
 						System.out.println("ERRORE POSIZIONAMENTO NAVE " + exc.getMessage());
 					}

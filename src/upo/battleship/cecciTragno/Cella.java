@@ -11,7 +11,7 @@ public class Cella{
 	
 	private int x, y;
 	private boolean libera;
-	private int stato; //-2= cella non cercata, -1=già cercato/errore, 0 = acqua, 1 = colpito, 2 = affondato, 3 = fine partita
+	private int stato; //-2= cella non cercata, 0 = acqua, 1 = colpito, 2 = affondato, 3 = fine partita
 	private Nave nave;
 	
 	public Cella(int x, int y) {
@@ -78,7 +78,7 @@ public class Cella{
 	 * @return int
 	 * <pre>Stato della nave contenuta nella cella</pre>
 	 */
-	
+	/*
 	public int getStato() {
 		if (nave != null && nave.getStato() == 3)
 			stato = nave.getStato();
